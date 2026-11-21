@@ -10,6 +10,9 @@ Two independent ways to get a **SOCKS5 proxy**:
 
 They are unrelated and can be used separately or chained.
 
+> **Use responsibly.** Run this only on infrastructure you own or control, and in line with
+> your cloud/hosting provider's terms of service. No warranty; see [LICENSE](LICENSE).
+
 ---
 
 ## Requirements
@@ -139,3 +142,9 @@ OCI/physical-host proxy.
 - The OCI security list allows SSH only from `admin_cidr`. Update it if your public IP changes.
 - OCI Always Free notes: resources must live in the tenancy's **home region**; `E2.1.Micro`
   has a nonzero limit in only one AD per tenancy; idle instances may be stopped after 7 days.
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
