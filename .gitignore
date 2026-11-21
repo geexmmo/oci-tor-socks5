@@ -1,0 +1,18 @@
+# terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+*.pem
+
+# runtime / local state
+.socks.log
+.socks.pid
+.tor/
+*.log
+*.pid
+
+# editor / OS
+.DS_Store
+*.swp

@@ -1,0 +1,44 @@
+#cloud-config
+package_update: true
+package_upgrade: false
+
+packages:
+  - microsocks
+
+write_files:
+  - path: /etc/microsocks.env
+    owner: root:root
+    permissions: "0600"
+    content: |
+      SOCKS_USER=${socks_user}
+      SOCKS_PASS=${socks_password}
+
+  - path: /etc/systemd/system/microsocks.service
+    owner: root:root
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=microsocks SOCKS5 proxy
+      After=network-online.target
+      Wants=network-online.target
+
+      [Service]
+      EnvironmentFile=/etc/microsocks.env
+      ExecStart=/usr/bin/microsocks -i 0.0.0.0 -p 1080 -u $${SOCKS_USER} -P $${SOCKS_PASS}
+      Restart=always
+      RestartSec=2
+      DynamicUser=yes
+      NoNewPrivileges=yes
+      PrivateTmp=yes
+      ProtectHome=yes
+      ProtectSystem=strict
+
+      [Install]
+      WantedBy=multi-user.target
+
+runcmd:
+  - systemctl daemon-reload
+  - systemctl enable --now microsocks
+  - systemctl is-active --quiet microsocks
+
+final_message: "socks5 listening on 0.0.0.0:1080"

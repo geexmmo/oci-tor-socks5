@@ -1,0 +1,12 @@
+tenancy_ocid        = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+compartment_ocid    = "ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+region              = "us-phoenix-1"
+availability_domain = "CWjj:PHX-AD-2"
+
+admin_cidr = "203.0.113.7/32" # <-- your public IP
+
+ssh_public_key_path  = "~/.ssh/id_rsa.pub"
+ssh_private_key_path = "~/.ssh/id_rsa"
+
+socks_user     = "proxy"
+socks_password = "change-me-to-a-long-random-string"
